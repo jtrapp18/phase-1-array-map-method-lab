@@ -11,20 +11,14 @@ const tutorials = [
   'what is JSONP?'
 ];
 
-// const titleCased = () => {
-//   return tutorials.map(tutorial => {
-//     return tutorial.split(" ").map(word =>
-//       word.charAt(0).toUpperCase() + word.slice(1).join(" "))
-//   })
-// }
+//if we use a callback function with one argument, the map will pass the value of the array as the argument
 
-const titleCased = () => {
-  return tutorials.map((tutorial) => {
-    return tutorial
-      .split(" ")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ");
-  });
-}
-const tutorialsCapitalized = titleCased();
-console.log(tutorialsCapitalized);
+const wordCased = word => word[0].toUpperCase() + word.slice(1)
+const sentenceCased = sentence => sentence.split(" ").map(wordCased).join(" ")
+
+const titleCased = () => tutorials.map(sentenceCased)
+
+console.log(sentenceCased("this is a sentence"))
+console.log(titleCased(tutorials))
+
+
